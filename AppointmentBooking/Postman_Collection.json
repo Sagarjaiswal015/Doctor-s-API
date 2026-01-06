@@ -1,0 +1,321 @@
+{
+  "info": {
+    "name": "Appointment Booking API",
+    "description": "API for booking medical appointments",
+    "version": "1.0"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7069/api/auth/register",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7069/api/auth/login",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Doctors",
+      "item": [
+        {
+          "name": "Get All Doctors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:7069/api/doctors",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:7069/api/doctors/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "doctors", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Doctor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. John Smith\",\n  \"specialization\": \"Cardiology\",\n  \"phone\": \"555-1234\",\n  \"email\": \"doctor@example.com\",\n  \"password\": \"DocPassword123\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7069/api/doctors",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor Schedule",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://localhost:7069/api/doctors/1/schedule",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "doctors", "1", "schedule"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor Appointments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://localhost:7069/api/doctors/1/appointments",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "doctors", "1", "appointments"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slots",
+      "item": [
+        {
+          "name": "Create Slot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"doctorId\": 1,\n  \"startTime\": \"2024-01-15T09:00:00\",\n  \"endTime\": \"2024-01-15T09:30:00\",\n  \"maxCapacity\": 3\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7069/api/slots",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "slots"]
+            }
+          }
+        },
+        {
+          "name": "Get Available Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:7069/api/slots/available",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "slots", "available"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:7069/api/slots/doctor/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "slots", "doctor", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Slot",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:7069/api/slots/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "slots", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Book Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appointmentSlotId\": 1,\n  \"patientName\": \"John Doe\",\n  \"patientPhone\": \"555-9876\",\n  \"patientEmail\": \"john@example.com\",\n  \"reason\": \"Regular checkup\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7069/api/appointments",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Get My Appointments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://localhost:7069/api/appointments/my-appointments",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "appointments", "my-appointments"]
+            }
+          }
+        },
+        {
+          "name": "Get Appointment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://localhost:7069/api/appointments/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "appointments", "1"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://localhost:7069/api/appointments/1/cancel",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "7069",
+              "path": ["api", "appointments", "1", "cancel"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
